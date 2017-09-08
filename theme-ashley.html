@@ -320,10 +320,35 @@
       tumblr_controls, .tmblr-iframe, .tumblrAutoPager_page_info, .tumblrAutoPager_page_separator, .pagination {
         display:none !important;
       }
+      
+      header {
+          position: inhert;
+          text-align: center;
 
-          
+      }
+      
             {CustomCSS}
-            
+      
+      @media screen and (min-width: 1000px) {
+          header {
+              position: fixed;
+              width: 20%;
+              margin-left: 5%;
+          }
+          
+          .content {
+              margin-left: 33%;
+              margin-right: 5%;
+          }
+          
+          .title {
+              font-size: 25px;
+          }
+          
+          .wrap {
+              width: 50%;
+          }
+      }      
         </style>
         {block:IfEnableEndlessScrolling}
             <script type="text/javascript" src="http://static.tumblr.com/0szq8b5/R0cmg0bw1/tumblr-endless-scrolling.js"></script>
@@ -333,7 +358,7 @@
 
   <header>
     {block:IfLogoImage}<a href="/"><img src="{image:Logo}" class="logo" /></a>{/block:IfLogoImage}
-    <h1><a href="/">{Title}</a></h1>
+    <h1><a class="title" href="/">{Title}</a></h1>
     {block:Description}
         <p>{Description}</p>
     {/block:Description}
