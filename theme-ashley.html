@@ -40,7 +40,9 @@
         <meta name="text:MessengerURL" content=""/>
         <meta name="text:InstagramURL" content=""/>
         <meta name="text:Email" content=""/>
+        <meta name="text:EmailSubject" content="Hello!"/>
         <meta name="text:AnalyticsTrackingID" content=""/>
+        <meta name="text:AnalyticsUTMCodes" content="?utm_source=general&utm_medium=referral"/>
         <meta name="color:Background" content="#fff"/>
         <meta name="color:Text" content="#4c4c4c"/>
         <meta name="color:Link" content="#09b"/>
@@ -445,8 +447,8 @@
 
 
   <header>
-    {block:IfLogoImage}<a href="/"><img src="{image:Logo}" class="logo" /></a>{/block:IfLogoImage}
-    <h1><a class="title" href="/">{Title}</a></h1>
+    {block:IfLogoImage}<a href="/{text:AnalyticsUTMCodes}"><img src="{image:Logo}" class="logo" /></a>{/block:IfLogoImage}
+    <h1><a class="title" href="/{text:AnalyticsUTMCodes}">{Title}</a></h1>
     <br>
     {block:Description}
         <p class="description">{Description}</p>
@@ -475,7 +477,7 @@
             </li>
             <li class="contact-icon">
                 {block:IfEmail}
-                    <a href="mailto:{text:Email}">
+                    <a href="mailto:{text:Email}?subject={text:EmailSubject}">
                         <i class="fa fa-envelope"></i>
                     </a>
                 {/block:IfEmail}
@@ -510,18 +512,18 @@
                     <article class="post {PostType}">
                         {block:Text}
                             {block:Title}
-                                <a href="{Permalink}" class="post-title"><h2>{Title}</h2></a>
+                                <a href="{Permalink}{text:AnalyticsUTMCodes}" class="post-title"><h2>{Title}</h2></a>
                             {/block:Title}
                             
                             {Body}
                             
-                            {block:More}<a href="{Permalink}" class="p">Read More &raquo;</a>{/block:More}
+                            {block:More}<a href="{Permalink}{text:AnalyticsUTMCodes}" class="p">Read More &raquo;</a>{/block:More}
                             
                         {/block:Text}
 
                         {block:Photo}
                             {LinkOpenTag}
-                            <a href="{Permalink}">
+                            <a href="{Permalink}{text:AnalyticsUTMCodes}">
                                 <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}">
                             </a>
                             {LinkCloseTag}
@@ -532,7 +534,13 @@
                         {/block:Photo}
 
                         {block:Photoset}
-                            {Photoset}
+                            {block:Photos}
+                                {LinkOpenTag}
+                                <a href="{Permalink}{text:AnalyticsUTMCodes}">
+                                    <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}">
+                                </a>
+                                {LinkCloseTag}
+                            {/block:Photos}
 
                             {block:Caption}
                                 {Caption}
@@ -601,7 +609,7 @@
                         {block:Date}
                             <footer>
                                 <ul class="small">
-                                    <li><a href="{Permalink}" title="{DayOfWeek}, {DayOfMonth} {Month} {Year}, {24Hour}:{Minutes}:{Seconds}">{TimeAgo}</a></li>
+                                    <li><a href="{Permalink}{text:AnalyticsUTMCodes}" title="{DayOfWeek}, {DayOfMonth} {Month} {Year}, {24Hour}:{Minutes}:{Seconds}">{TimeAgo}</a></li>
                                     {block:RebloggedFrom}<li class="source"> (reblogged from <a href="{ReblogParentURL}">{ReblogParentName}</a>)</li>{/block:RebloggedFrom}
                                     {block:ContentSource}
                                         <li class="source">via <a href="{SourceURL}">{SourceTitle}</a></li>
